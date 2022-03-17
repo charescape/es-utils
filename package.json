@@ -33,6 +33,10 @@
     "do-npm-login": "npm login -dd",
     "do-npm-publish": "npm publish . --access public -dd"
   },
+  "dependencies": {
+    "@charescape/js-utils": "^1.6.0",
+    "js-base64": "^3.7.2"
+  },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3",
     "@tsconfig/recommended": "^1.0",
