@@ -17,9 +17,9 @@ const pkgs = [];
 
   const inputPath = `src/${pkg.name}.ts`;
 
-  let outputName = `JsUtils`;
+  let outputName = `EsUtils`;
   let outputFileDir = `dist`;
-  let outputFileName = `js-utils`;
+  let outputFileName = `es-utils`;
 
   if (!isCombined) {
     outputName += `_${_upperFirst(_camelCase(pkg.name))}`;
