@@ -1,0 +1,59 @@
+{
+  "name": "@charescape/js-utils",
+  "version": "1.6.0",
+  "description": "Lightweight javascript utilities for node.js and web",
+  "keywords": [
+    "javascript",
+    "utilities"
+  ],
+  "main": "dist/js-utils.cjs.js",
+  "module": "dist/js-utils.esm.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "src/",
+    "dist/",
+    "types/"
+  ],
+  "miniprogram": "dist/",
+  "author": "Charescape <charescape@outlook.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/charescape/js-utils"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run build:types && npm run build:dist",
+    "build:dist": "rm -rf dist/ && rollup -c",
+    "build:types": "rm -rf types/ && tsc --emitDeclarationOnly --moduleResolution node",
+    "dev": "rollup -c -w",
+    "cypress:open": "cypress open",
+    "test": "npm run build && npm run test:node && npm run test:jsdom",
+    "test:node": "jest   --env=node --errorOnDeprecated --coverage --coverageProvider=v8 --colors --verbose",
+    "test:jsdom": "jest --env=jsdom --errorOnDeprecated --coverage --coverageProvider=v8 --colors --verbose",
+    "redo-install": "rm -rf node_modules/ && rm -f package-lock.json && npm install -dd",
+    "do-npm-login": "npm login -dd",
+    "do-npm-publish": "npm publish . --access public -dd"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3",
+    "@tsconfig/recommended": "^1.0",
+    "@types/jest": "^27.4",
+    "@types/qs": "^6.9",
+    "axios": "^0.26",
+    "core-js": "^3.21",
+    "cypress": "^9.4",
+    "jest": "^27.5",
+    "lodash-es": "^4.17",
+    "qs": "^6.10",
+    "rollup": "^2.67",
+    "rollup-plugin-terser": "^7.0",
+    "sweetalert2": "^11.4",
+    "tslib": "^2.2",
+    "typescript": "^4.5"
+  },
+  "jest": {
+    "setupFiles": [
+      "./jest-setup.js"
+    ]
+  }
+}
