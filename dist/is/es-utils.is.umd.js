@@ -1,9 +1,9 @@
-/*! JsUtils_Is 2022-03-17T02:15:15.551Z */
+/*! EsUtils_Is 2022-03-17T02:16:41.878Z */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
     typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.JsUtils_Is = {}));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.EsUtils_Is = {}));
 })(this, (function (exports) { 'use strict';
 
     // Undefined, Null

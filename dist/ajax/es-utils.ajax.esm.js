@@ -1,8 +1,4 @@
-/*! JsUtils_Ajax 2022-03-17T02:15:15.564Z */
-
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
+/*! EsUtils_Ajax 2022-03-17T02:16:41.892Z */
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -57,4 +53,4 @@ function ajaxCreate(config) {
     // instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 }
 
-exports.ajaxCreate = ajaxCreate;
+export { ajaxCreate };

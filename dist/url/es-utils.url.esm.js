@@ -1,8 +1,4 @@
-/*! JsUtils_Url 2022-03-17T02:15:15.559Z */
-
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
+/*! EsUtils_Url 2022-03-17T02:16:41.887Z */
 
 // Undefined, Null
 function isUndefined(value) {
@@ -42,6 +38,4 @@ function urlGetSearchParam(param, from) {
     return null;
 }
 
-exports.urlGetSearchParam = urlGetSearchParam;
-exports.urlGetSearchParams = urlGetSearchParams;
-exports.urlGetSearchString = urlGetSearchString;
+export { urlGetSearchParam, urlGetSearchParams, urlGetSearchString };

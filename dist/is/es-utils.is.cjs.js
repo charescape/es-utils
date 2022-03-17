@@ -1,4 +1,8 @@
-/*! JsUtils_Is 2022-03-17T02:15:15.551Z */
+/*! EsUtils_Is 2022-03-17T02:16:41.878Z */
+
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
 
 // Undefined, Null
 function isUndefined(value) {
@@ -120,4 +124,28 @@ function isStringContainsChChars(value) {
     return /[\u4e00-\u9fa5]+/g.test(value);
 }
 
-export { isArray, isArrayEmpty, isArrayFilled, isBoolean, isFalse, isFalsyValue, isFunction, isInteger, isIntegeric, isNil, isNull, isNumber, isNumberZero, isObject, isObjectEmpty, isObjectFilled, isPlainObject, isString, isStringContainsChChars, isStringContainsString, isStringEmpty, isStringFilled, isSymbol, isTrue, isUndefined };
+exports.isArray = isArray;
+exports.isArrayEmpty = isArrayEmpty;
+exports.isArrayFilled = isArrayFilled;
+exports.isBoolean = isBoolean;
+exports.isFalse = isFalse;
+exports.isFalsyValue = isFalsyValue;
+exports.isFunction = isFunction;
+exports.isInteger = isInteger;
+exports.isIntegeric = isIntegeric;
+exports.isNil = isNil;
+exports.isNull = isNull;
+exports.isNumber = isNumber;
+exports.isNumberZero = isNumberZero;
+exports.isObject = isObject;
+exports.isObjectEmpty = isObjectEmpty;
+exports.isObjectFilled = isObjectFilled;
+exports.isPlainObject = isPlainObject;
+exports.isString = isString;
+exports.isStringContainsChChars = isStringContainsChChars;
+exports.isStringContainsString = isStringContainsString;
+exports.isStringEmpty = isStringEmpty;
+exports.isStringFilled = isStringFilled;
+exports.isSymbol = isSymbol;
+exports.isTrue = isTrue;
+exports.isUndefined = isUndefined;
