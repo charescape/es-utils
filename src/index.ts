@@ -26,12 +26,20 @@ export function urlGetSearchString(wls?: string): string {
 
   wls = (wls as string).trimStart();
 
-  const arr = (wls as string).split('?');
-  if (arr.length > 1) {
-    delete arr[0];
-  }
+  if ((wls as string).startsWith('http:') || (wls as string).startsWith('https:')) {
+    const arr = (wls as string).split('?');
+    if (arr.length > 1) {
+      delete arr[0];
+    }
 
-  wls = arr.join('');
+    wls = arr.join('');
+  } else {
+    wls = (wls as string).trimStart();
+
+    if (wls.charAt(0) === '?') {
+      wls = wls.replace(/^[?]+/, '');
+    }
+  }
 
   return `${wls}`;
 }
