@@ -24,6 +24,8 @@ export function urlGetSearchString(wls?: string): string {
     wls = window.location.search;
   }
 
+  wls = (wls as string).trimStart();
+
   const arr = (wls as string).split('?');
   if (arr.length > 1) {
     delete arr[0];
