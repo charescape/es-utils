@@ -24,13 +24,14 @@ export function urlGetSearchString(wls?: string): string {
     wls = window.location.search;
   }
 
-  let result: string = (wls as string).trimStart();
-
-  if (result.charAt(0) === '?') {
-    result = result.replace(/^[?]+/, '');
+  const arr = (wls as string).split('?');
+  if (arr.length > 1) {
+    delete arr[0];
   }
 
-  return result;
+  wls = arr.join('');
+
+  return `${wls}`;
 }
 
 export function urlGetSearchParams(wls?: string): ParsedQs {
