@@ -34,8 +34,6 @@ export function urlGetSearchString(wls?: string): string {
 
     wls = arr.join('');
   } else {
-    wls = (wls as string).trimStart();
-
     if (wls.charAt(0) === '?') {
       wls = wls.replace(/^[?]+/, '');
     }
