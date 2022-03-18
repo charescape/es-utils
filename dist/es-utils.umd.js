@@ -1,4 +1,4 @@
-/*! EsUtils 2022-03-17T09:22:18.016Z */
+/*! EsUtils 2022-03-18T09:58:21.429Z */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('js-base64'), require('@charescape/js-utils'), require('qs')) :
@@ -22,11 +22,20 @@
         if (!jsUtils.isString(wls)) {
             wls = window.location.search;
         }
-        var result = wls.trimStart();
-        if (result.charAt(0) === '?') {
-            result = result.replace(/^[?]+/, '');
+        wls = wls.trimStart();
+        if (wls.startsWith('http:') || wls.startsWith('https:')) {
+            var arr = wls.split('?');
+            if (arr.length > 1) {
+                delete arr[0];
+            }
+            wls = arr.join('');
         }
-        return result;
+        else {
+            if (wls.charAt(0) === '?') {
+                wls = wls.replace(/^[?]+/, '');
+            }
+        }
+        return "".concat(wls);
     }
     function urlGetSearchParams(wls) {
         return qs.parse(urlGetSearchString(wls));
