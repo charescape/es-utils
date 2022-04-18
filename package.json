@@ -44,7 +44,7 @@
     "@types/jest": "^27.4",
     "@types/qs": "^6.9",
     "axios": "^0.26",
-    "core-js": "^3.21",
+    "core-js": "^3.22",
     "jest": "^27.5",
     "lodash-es": "^4.17",
     "rollup": "^2.70",
