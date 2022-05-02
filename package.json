@@ -47,7 +47,7 @@
     "core-js": "^3.21",
     "jest": "^27.5",
     "lodash-es": "^4.17",
-    "rollup": "^2.70",
+    "rollup": "^2.71",
     "rollup-plugin-terser": "^7.0",
     "sweetalert2": "^11.4",
     "tslib": "^2.3",
