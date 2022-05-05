@@ -68,7 +68,14 @@ const pkgs = [];
     ],
   };
 
-
+  if (pkg.name === 'swal' || pkg.name === 'ajax' || pkg.name === 'index') {
+    // https://github.com/sweetalert2/sweetalert2/blob/576e7a16c488bdcc3f07037e7cd8599e71ebf945/gulpfile.js#L81
+    rollupConfig.onwarn = (warning, rollupWarn) => {
+      if (warning.code !== 'CIRCULAR_DEPENDENCY' && warning.code !== 'THIS_IS_UNDEFINED') {
+        rollupWarn(warning)
+      }
+    }
+  }
 
   pkgs.push(rollupConfig);
 });
