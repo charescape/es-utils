@@ -1,5 +1,5 @@
 import {encode, decode} from "js-base64";
-import {isNil, isString} from "@charescape/js-utils";
+import {isNil, isString} from "./is";
 import {parse, ParsedQs} from "qs";
 
 export function urlsafe_b64encode(value: string): string {
