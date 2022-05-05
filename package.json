@@ -34,9 +34,13 @@
     "do-npm-publish": "npm publish . --access public --registry=https://registry.npmjs.org/ -dd"
   },
   "dependencies": {
-    "@charescape/js-utils": "^1.6.0",
+    "@types/qs": "^6.9.0",
+    "axios": "^0.27.2",
+    "core-js": "^3.21.0",
+    "lodash-es": "^4.17.0",
     "js-base64": "^3.7.2",
-    "qs": "^6.10.3"
+    "qs": "^6.10.3",
+    "sweetalert2": "^11.4.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.0",
@@ -44,15 +48,10 @@
     "@rollup/plugin-typescript": "^8.3.0",
     "@tsconfig/recommended": "^1.0.0",
     "@types/jest": "^27.4.0",
-    "@types/qs": "^6.9.0",
-    "axios": "^0.27.2",
-    "core-js": "^3.21.0",
     "jest": "^27.5.0",
-    "lodash-es": "^4.17.0",
     "rollup": "^2.70.0",
     "rollup-plugin-polyfill-node": "^0.9.0",
     "rollup-plugin-terser": "^7.0.0",
-    "sweetalert2": "^11.4.0",
     "tslib": "^2.3.0",
     "typescript": "^4.6.0"
   },
