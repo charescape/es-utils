@@ -1,9 +1,11 @@
-
 import _camelCase from 'lodash-es/camelCase.js';
 import _upperFirst from 'lodash-es/upperFirst.js';
 
 import typescript from '@rollup/plugin-typescript';
-import { terser } from 'rollup-plugin-terser';
+import {nodeResolve} from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import {terser} from 'rollup-plugin-terser';
+import nodePolyfills from 'rollup-plugin-polyfill-node';
 
 const pkgs = [];
 
@@ -54,7 +56,12 @@ const pkgs = [];
         plugins: [terser()]
       }
     ],
-    plugins: [typescript()],
+    plugins: [
+      typescript(),
+      nodePolyfills(),
+      nodeResolve({browser: true}),
+      commonjs(),
+    ],
   });
 });
 
