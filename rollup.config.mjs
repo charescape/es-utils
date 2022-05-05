@@ -59,7 +59,7 @@ const pkgs = [];
     plugins: [
       typescript(),
       nodePolyfills(),
-      nodeResolve({browser: true}),
+      nodeResolve(),
       commonjs(),
     ],
   });
