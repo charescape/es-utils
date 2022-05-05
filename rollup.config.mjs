@@ -30,7 +30,7 @@ const pkgs = [];
     outputFileName += `.${pkg.name}`;
   }
 
-  pkgs.push({
+  const rollupConfig = {
     input: inputPath,
     output: [
       {
@@ -66,7 +66,11 @@ const pkgs = [];
       nodeResolve(),
       commonjs(),
     ],
-  });
+  };
+
+
+
+  pkgs.push(rollupConfig);
 });
 
 export default pkgs;
