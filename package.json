@@ -39,14 +39,14 @@
   },
   "license": "MIT",
   "scripts": {
-    "microbuild": "microbundle --visualize src/*.ts",
-    "microdev": "microbundle watch",
+    "micro:build": "microbundle --visualize src/*.ts",
+    "micro:dev": "microbundle watch",
 
     "build": "npm run build:types && npm run build:dist",
     "build:dist": "rm -rf dist/ && rollup -c",
     "build:types": "rm -rf types/ && tsc --emitDeclarationOnly --moduleResolution node",
     "dev": "rollup -c -w",
-    "test": "npm run build && npm run test:node && npm run test:jsdom",
+    "test": "npm run micro:build && npm run test:node && npm run test:jsdom",
     "test:node": "jest   --env=node --errorOnDeprecated --coverage --coverageProvider=v8 --colors --verbose",
     "test:jsdom": "jest --env=jsdom --errorOnDeprecated --coverage --coverageProvider=v8 --colors --verbose",
     "redo-install": "rm -rf node_modules/ && rm -f package-lock.json && npm install -dd",
