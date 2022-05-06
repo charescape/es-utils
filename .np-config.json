@@ -1,0 +1,7 @@
+{
+  "branch": "main",
+  "cleanup": false,
+  "tests": false,
+  "yarn": false,
+  "releaseDraft": false
+}
