@@ -16,7 +16,7 @@
   "source": "src/index.ts",
   "exports": {
     ".": {
-      "types": "./types/es-utils.d.ts",
+      "types": "./types/index.d.ts",
       "browser": "./dist/es-utils.esm.js",
       "umd": "./dist/es-utils.umd.js",
       "import": "./dist/es-utils.mjs",
@@ -24,7 +24,7 @@
     }
   },
 
-  "types": "types/es-utils.d.ts",
+  "types": "types/index.d.ts",
   "files": [
     "src/",
     "dist/",
