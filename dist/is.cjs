@@ -1,2 +1,157 @@
-function t(t){return Object.is(t,void 0)}function r(t){return Object.is(t,null)}function e(e){return t(e)||r(e)}function n(t){return Object.is(t,!0)}function i(t){return Object.is(t,!1)}function o(t){return("number"==typeof t||"bigint"==typeof t)&&!Object.is(t,NaN)}function s(t){return Number.isInteger(t)}function u(t){return"string"==typeof t}function c(t){return u(t)&&""===t.trim()}function f(t){return Array.isArray(t)}function p(t){return"object"==typeof t&&!r(t)&&!f(t)}function l(t){return o(t)&&0==t}exports.isArray=f,exports.isArrayEmpty=function(t){return f(t)&&0===t.length},exports.isArrayFilled=function(t){return f(t)&&t.length>0},exports.isBoolean=function(t){return n(t)||i(t)},exports.isFalse=i,exports.isFalsyValue=function(t){return e(t)||i(t)||Object.is(t,NaN)||l(t)||c(t)},exports.isFunction=function(t){return"function"==typeof t},exports.isInteger=s,exports.isIntegeric=function(t){if(s(t))return!0;if(u(t)){if("0"===t)return!0;if("-"===t.charAt(0)&&(t=t.slice(1)),/^[1-9]\d*$/.test(t))return!0}return!1},exports.isNil=e,exports.isNull=r,exports.isNumber=o,exports.isNumberZero=l,exports.isObject=p,exports.isObjectEmpty=function(t){return p(t)&&0===Object.keys(t).length},exports.isObjectFilled=function(t){return p(t)&&Object.keys(t).length>0},exports.isPlainObject=function(t){if(!p(t))return!1;if("[object Object]"!==Object.prototype.toString.call(t))return!1;if(null===Object.getPrototypeOf(t))return!0;let r=t;for(;null!==Object.getPrototypeOf(r);)r=Object.getPrototypeOf(r);return Object.getPrototypeOf(t)===r},exports.isString=u,exports.isStringContainsChChars=function(t){return!!u(t)&&/[\u4e00-\u9fa5]+/g.test(t)},exports.isStringContainsString=function(t,r){return!(!u(t)||!u(r))&&-1!==t.indexOf(r)},exports.isStringEmpty=c,exports.isStringFilled=function(t){return u(t)&&""!==t.trim()},exports.isSymbol=function(t){return"symbol"==typeof t},exports.isTrue=n,exports.isUndefined=t;
+// Undefined, Null
+function isUndefined(value) {
+  return Object.is(value, undefined);
+}
+function isNull(value) {
+  return Object.is(value, null);
+}
+function isNil(value) {
+  return isUndefined(value) || isNull(value);
+} // Boolean
+
+function isTrue(value) {
+  return Object.is(value, true);
+}
+function isFalse(value) {
+  return Object.is(value, false);
+}
+function isBoolean(value) {
+  return isTrue(value) || isFalse(value);
+} // Number
+
+function isNumber(value) {
+  return (typeof value === "number" || typeof value === "bigint") && !Object.is(value, NaN);
+}
+function isInteger(value) {
+  return Number.isInteger(value);
+}
+function isIntegeric(value) {
+  if (isInteger(value)) {
+    return true;
+  }
+
+  if (isString(value)) {
+    if (value === "0") {
+      return true;
+    }
+
+    if (value.charAt(0) === "-") {
+      value = value.slice(1);
+    }
+
+    if (/^[1-9]\d*$/.test(value)) {
+      return true;
+    }
+  }
+
+  return false;
+} // String
+
+function isString(value) {
+  return typeof value === "string";
+}
+function isStringFilled(value) {
+  return isString(value) && value.trim() !== "";
+}
+function isStringEmpty(value) {
+  return isString(value) && value.trim() === "";
+} // Array
+
+function isArray(value) {
+  return Array.isArray(value);
+}
+function isArrayFilled(value) {
+  return isArray(value) && value.length > 0;
+}
+function isArrayEmpty(value) {
+  return isArray(value) && value.length === 0;
+} // Object
+
+function isObject(value) {
+  return typeof value === "object" && !isNull(value) && !isArray(value);
+}
+function isObjectFilled(value) {
+  return isObject(value) && Object.keys(value).length > 0;
+}
+function isObjectEmpty(value) {
+  return isObject(value) && Object.keys(value).length === 0;
+}
+function isPlainObject(value) {
+  if (!isObject(value)) {
+    return false;
+  } // eg: Math [object Math], Error [object Function] ...
+
+
+  if (Object.prototype.toString.call(value) !== "[object Object]") {
+    return false;
+  } // following lodash: https://github.com/lodash/lodash/blob/master/isPlainObject.js#L34-L41
+
+
+  if (Object.getPrototypeOf(value) === null) {
+    return true;
+  }
+
+  let prototypeOf = value;
+
+  while (Object.getPrototypeOf(prototypeOf) !== null) {
+    prototypeOf = Object.getPrototypeOf(prototypeOf);
+  }
+
+  return Object.getPrototypeOf(value) === prototypeOf;
+} // Function
+
+function isFunction(value) {
+  return typeof value === "function";
+} // Symbol
+
+function isSymbol(value) {
+  return typeof value === "symbol";
+} // Others
+
+function isFalsyValue(value) {
+  return isNil(value) || isFalse(value) || Object.is(value, NaN) || isNumberZero(value) || isStringEmpty(value);
+}
+function isStringContainsString(haystack, needle) {
+  if (!isString(haystack) || !isString(needle)) {
+    return false;
+  }
+
+  return haystack.indexOf(needle) !== -1;
+}
+function isNumberZero(value) {
+  return isNumber(value) && value == 0;
+}
+function isStringContainsChChars(value) {
+  if (!isString(value)) {
+    return false;
+  }
+
+  return /[\u4e00-\u9fa5]+/g.test(value);
+}
+
+exports.isArray = isArray;
+exports.isArrayEmpty = isArrayEmpty;
+exports.isArrayFilled = isArrayFilled;
+exports.isBoolean = isBoolean;
+exports.isFalse = isFalse;
+exports.isFalsyValue = isFalsyValue;
+exports.isFunction = isFunction;
+exports.isInteger = isInteger;
+exports.isIntegeric = isIntegeric;
+exports.isNil = isNil;
+exports.isNull = isNull;
+exports.isNumber = isNumber;
+exports.isNumberZero = isNumberZero;
+exports.isObject = isObject;
+exports.isObjectEmpty = isObjectEmpty;
+exports.isObjectFilled = isObjectFilled;
+exports.isPlainObject = isPlainObject;
+exports.isString = isString;
+exports.isStringContainsChChars = isStringContainsChChars;
+exports.isStringContainsString = isStringContainsString;
+exports.isStringEmpty = isStringEmpty;
+exports.isStringFilled = isStringFilled;
+exports.isSymbol = isSymbol;
+exports.isTrue = isTrue;
+exports.isUndefined = isUndefined;
 //# sourceMappingURL=is.cjs.map

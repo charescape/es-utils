@@ -1,2 +1,164 @@
-!function(t,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports):"function"==typeof define&&define.amd?define(["exports"],n):n((t||self).EsUtils={})}(this,function(t){function n(t){return Object.is(t,void 0)}function e(t){return Object.is(t,null)}function i(t){return n(t)||e(t)}function r(t){return Object.is(t,!0)}function u(t){return Object.is(t,!1)}function o(t){return("number"==typeof t||"bigint"==typeof t)&&!Object.is(t,NaN)}function f(t){return Number.isInteger(t)}function c(t){return"string"==typeof t}function s(t){return c(t)&&""===t.trim()}function l(t){return Array.isArray(t)}function b(t){return"object"==typeof t&&!e(t)&&!l(t)}function y(t){return o(t)&&0==t}t.isArray=l,t.isArrayEmpty=function(t){return l(t)&&0===t.length},t.isArrayFilled=function(t){return l(t)&&t.length>0},t.isBoolean=function(t){return r(t)||u(t)},t.isFalse=u,t.isFalsyValue=function(t){return i(t)||u(t)||Object.is(t,NaN)||y(t)||s(t)},t.isFunction=function(t){return"function"==typeof t},t.isInteger=f,t.isIntegeric=function(t){if(f(t))return!0;if(c(t)){if("0"===t)return!0;if("-"===t.charAt(0)&&(t=t.slice(1)),/^[1-9]\d*$/.test(t))return!0}return!1},t.isNil=i,t.isNull=e,t.isNumber=o,t.isNumberZero=y,t.isObject=b,t.isObjectEmpty=function(t){return b(t)&&0===Object.keys(t).length},t.isObjectFilled=function(t){return b(t)&&Object.keys(t).length>0},t.isPlainObject=function(t){if(!b(t))return!1;if("[object Object]"!==Object.prototype.toString.call(t))return!1;if(null===Object.getPrototypeOf(t))return!0;let n=t;for(;null!==Object.getPrototypeOf(n);)n=Object.getPrototypeOf(n);return Object.getPrototypeOf(t)===n},t.isString=c,t.isStringContainsChChars=function(t){return!!c(t)&&/[\u4e00-\u9fa5]+/g.test(t)},t.isStringContainsString=function(t,n){return!(!c(t)||!c(n))&&-1!==t.indexOf(n)},t.isStringEmpty=s,t.isStringFilled=function(t){return c(t)&&""!==t.trim()},t.isSymbol=function(t){return"symbol"==typeof t},t.isTrue=r,t.isUndefined=n});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.EsUtils = {}));
+})(this, (function (exports) {
+  // Undefined, Null
+  function isUndefined(value) {
+    return Object.is(value, undefined);
+  }
+  function isNull(value) {
+    return Object.is(value, null);
+  }
+  function isNil(value) {
+    return isUndefined(value) || isNull(value);
+  } // Boolean
+
+  function isTrue(value) {
+    return Object.is(value, true);
+  }
+  function isFalse(value) {
+    return Object.is(value, false);
+  }
+  function isBoolean(value) {
+    return isTrue(value) || isFalse(value);
+  } // Number
+
+  function isNumber(value) {
+    return (typeof value === "number" || typeof value === "bigint") && !Object.is(value, NaN);
+  }
+  function isInteger(value) {
+    return Number.isInteger(value);
+  }
+  function isIntegeric(value) {
+    if (isInteger(value)) {
+      return true;
+    }
+
+    if (isString(value)) {
+      if (value === "0") {
+        return true;
+      }
+
+      if (value.charAt(0) === "-") {
+        value = value.slice(1);
+      }
+
+      if (/^[1-9]\d*$/.test(value)) {
+        return true;
+      }
+    }
+
+    return false;
+  } // String
+
+  function isString(value) {
+    return typeof value === "string";
+  }
+  function isStringFilled(value) {
+    return isString(value) && value.trim() !== "";
+  }
+  function isStringEmpty(value) {
+    return isString(value) && value.trim() === "";
+  } // Array
+
+  function isArray(value) {
+    return Array.isArray(value);
+  }
+  function isArrayFilled(value) {
+    return isArray(value) && value.length > 0;
+  }
+  function isArrayEmpty(value) {
+    return isArray(value) && value.length === 0;
+  } // Object
+
+  function isObject(value) {
+    return typeof value === "object" && !isNull(value) && !isArray(value);
+  }
+  function isObjectFilled(value) {
+    return isObject(value) && Object.keys(value).length > 0;
+  }
+  function isObjectEmpty(value) {
+    return isObject(value) && Object.keys(value).length === 0;
+  }
+  function isPlainObject(value) {
+    if (!isObject(value)) {
+      return false;
+    } // eg: Math [object Math], Error [object Function] ...
+
+
+    if (Object.prototype.toString.call(value) !== "[object Object]") {
+      return false;
+    } // following lodash: https://github.com/lodash/lodash/blob/master/isPlainObject.js#L34-L41
+
+
+    if (Object.getPrototypeOf(value) === null) {
+      return true;
+    }
+
+    let prototypeOf = value;
+
+    while (Object.getPrototypeOf(prototypeOf) !== null) {
+      prototypeOf = Object.getPrototypeOf(prototypeOf);
+    }
+
+    return Object.getPrototypeOf(value) === prototypeOf;
+  } // Function
+
+  function isFunction(value) {
+    return typeof value === "function";
+  } // Symbol
+
+  function isSymbol(value) {
+    return typeof value === "symbol";
+  } // Others
+
+  function isFalsyValue(value) {
+    return isNil(value) || isFalse(value) || Object.is(value, NaN) || isNumberZero(value) || isStringEmpty(value);
+  }
+  function isStringContainsString(haystack, needle) {
+    if (!isString(haystack) || !isString(needle)) {
+      return false;
+    }
+
+    return haystack.indexOf(needle) !== -1;
+  }
+  function isNumberZero(value) {
+    return isNumber(value) && value == 0;
+  }
+  function isStringContainsChChars(value) {
+    if (!isString(value)) {
+      return false;
+    }
+
+    return /[\u4e00-\u9fa5]+/g.test(value);
+  }
+
+  exports.isArray = isArray;
+  exports.isArrayEmpty = isArrayEmpty;
+  exports.isArrayFilled = isArrayFilled;
+  exports.isBoolean = isBoolean;
+  exports.isFalse = isFalse;
+  exports.isFalsyValue = isFalsyValue;
+  exports.isFunction = isFunction;
+  exports.isInteger = isInteger;
+  exports.isIntegeric = isIntegeric;
+  exports.isNil = isNil;
+  exports.isNull = isNull;
+  exports.isNumber = isNumber;
+  exports.isNumberZero = isNumberZero;
+  exports.isObject = isObject;
+  exports.isObjectEmpty = isObjectEmpty;
+  exports.isObjectFilled = isObjectFilled;
+  exports.isPlainObject = isPlainObject;
+  exports.isString = isString;
+  exports.isStringContainsChChars = isStringContainsChChars;
+  exports.isStringContainsString = isStringContainsString;
+  exports.isStringEmpty = isStringEmpty;
+  exports.isStringFilled = isStringFilled;
+  exports.isSymbol = isSymbol;
+  exports.isTrue = isTrue;
+  exports.isUndefined = isUndefined;
+
+}));
 //# sourceMappingURL=is.umd.js.map

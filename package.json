@@ -39,7 +39,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "micro:build": "microbundle --external none --visualize src/*.ts",
+    "micro:prebuild": "microbundle --external none --compress false --visualize src/*.ts",
+    "micro:build": "microbundle --external none src/*.ts",
     "micro:dev": "microbundle watch",
 
     "build": "npm run build:types && npm run build:dist",
