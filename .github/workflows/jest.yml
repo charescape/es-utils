@@ -27,4 +27,6 @@ jobs:
 
       - run: npm install
 
+      - run: npm run micro:build
+
       - run: npm run test
