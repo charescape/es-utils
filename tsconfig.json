@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "rootDir": ".",
-    "outDir": "dist",
-    "sourceMap": false,
-    "noEmit": true,
+//    "baseUrl": ".",
+//    "rootDir": ".",
+//    "outDir": "dist",
+//    "sourceMap": false,
+//    "noEmit": true,
 
     "target": "ES2015",
     "module": "esnext",
