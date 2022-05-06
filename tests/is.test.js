@@ -1,4 +1,4 @@
-const EsUtils = require('../dist/es-utils.cjs.js');
+const EsUtils = require('../dist/es-utils.umd.js');
 
 // Undefined, Null
 test('isUndefined', () => {

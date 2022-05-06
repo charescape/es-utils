@@ -1,4 +1,4 @@
-const EsUtils = require('../dist/es-utils.cjs.js');
+const EsUtils = require('../dist/es-utils.umd.js');
 
 test('urlsafe_b64*', () => {
   const url1 = 'https://uname:pwd@test.example.com:9090/path1/path-2?arg=value&arg2=value2#abcd';
