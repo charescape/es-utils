@@ -4,15 +4,15 @@
   "type": "module",
   "version": "2.0.1",
   "private": false,
-
   "description": "Javascript utilities for node.js and web",
-  "keywords": ["javascript", "utilities"],
-
+  "keywords": [
+    "javascript",
+    "utilities"
+  ],
   "main": "./dist/es-utils.cjs",
   "module": "./dist/es-utils.esm.js",
   "umd:main": "./dist/es-utils.umd.js",
   "unpkg": "./dist/es-utils.umd.js",
-
   "source": "src/index.ts",
   "exports": {
     ".": {
@@ -23,7 +23,6 @@
       "require": "./dist/es-utils.js"
     }
   },
-
   "types": "types/index.d.ts",
   "files": [
     "src/",
@@ -31,7 +30,6 @@
     "types/"
   ],
   "miniprogram": "dist/",
-
   "author": "Charescape <charescape@outlook.com>",
   "repository": {
     "type": "git",
@@ -40,20 +38,16 @@
   "license": "MIT",
   "scripts": {
     "rmdist": "rm -rf dist/ && rm -rf types/",
-
     "micro:prebuild": "npm run rmdist && microbundle --external none --compress false src/*.ts",
     "micro:build": "npm run rmdist && microbundle --external none src/*.ts",
     "micro:dev": "microbundle watch",
-
     "build": "npm run build:types && npm run build:dist",
     "build:dist": "rm -rf dist/ && rollup -c",
     "build:types": "rm -rf types/ && tsc --noEmit false --emitDeclarationOnly --moduleResolution node",
     "dev": "rollup -c -w",
-
     "test": "npm run micro:build && npm run test:node && npm run test:jsdom",
     "test:node": "jest   --env=node --errorOnDeprecated --coverage --coverageProvider=v8 --colors --verbose",
     "test:jsdom": "jest --env=jsdom --errorOnDeprecated --coverage --coverageProvider=v8 --colors --verbose",
-
     "redo-install": "rm -rf node_modules/ && rm -f package-lock.json && npm install -dd",
     "do-npm-login": "npm login --registry=https://registry.npmjs.org/ -dd",
     "do-npm-publish": "npm publish . --access public --registry=https://registry.npmjs.org/ -dd"
@@ -71,6 +65,7 @@
     "@types/qs": "^6.9.0",
     "jest": "^27.5.0",
     "microbundle": "^0.15.0",
+    "np": "^7.6.1",
     "tslib": "^2.3.0",
     "typescript": "^4.6.0"
   },
