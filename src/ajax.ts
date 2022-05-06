@@ -1,10 +1,13 @@
-import axios, {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, Method} from "axios";
+import type * as Axios_T from "axios";
+
 import {stringify} from "qs";
 import {isIntegeric, isNil, isObject, isStringFilled} from "./is";
 import {swalAlert, swalToast} from "./swal";
 
-export function ajaxRequest(method: Method, url: string, config: AxiosRequestConfig): Promise<AxiosResponse> {
-  const axiosInstance: AxiosInstance = axios.create();
+declare const axios: Axios_T.AxiosStatic;
+
+export function ajaxRequest(method: Axios_T.Method, url: string, config: Axios_T.AxiosRequestConfig): Promise<Axios_T.AxiosResponse> {
+  const axiosInstance: Axios_T.AxiosInstance = axios.create();
 
   axiosInstance.defaults.headers.post['Content-Type']  = 'application/x-www-form-urlencoded';
   axiosInstance.defaults.headers.put['Content-Type']   = 'application/x-www-form-urlencoded';
@@ -42,7 +45,7 @@ export function ajaxRequest(method: Method, url: string, config: AxiosRequestCon
   });
 }
 
-export function ajaxGet(url: string, query?: object, config?: AxiosRequestConfig): Promise<AxiosResponse> {
+export function ajaxGet(url: string, query?: object, config?: Axios_T.AxiosRequestConfig): Promise<Axios_T.AxiosResponse> {
   if (isNil(query)) {
     query = {};
   }
@@ -51,7 +54,7 @@ export function ajaxGet(url: string, query?: object, config?: AxiosRequestConfig
     config = {};
   }
 
-  const mergeConfig: AxiosRequestConfig = {
+  const mergeConfig: Axios_T.AxiosRequestConfig = {
     params: query,
 
     ...config,
@@ -60,12 +63,12 @@ export function ajaxGet(url: string, query?: object, config?: AxiosRequestConfig
   return ajaxRequest('GET', url, mergeConfig);
 }
 
-export function ajaxPost(url: string, data: object, config?: AxiosRequestConfig): Promise<AxiosResponse> {
+export function ajaxPost(url: string, data: object, config?: Axios_T.AxiosRequestConfig): Promise<Axios_T.AxiosResponse> {
   if (isNil(config)) {
     config = {};
   }
 
-  const mergeConfig: AxiosRequestConfig = {
+  const mergeConfig: Axios_T.AxiosRequestConfig = {
     data: data,
 
     ...config,
@@ -84,12 +87,12 @@ export function ajaxPost(url: string, data: object, config?: AxiosRequestConfig)
   return ajaxRequest('POST', url, mergeConfig);
 }
 
-export function ajaxPut(url: string, data: object, config?: AxiosRequestConfig): Promise<AxiosResponse> {
+export function ajaxPut(url: string, data: object, config?: Axios_T.AxiosRequestConfig): Promise<Axios_T.AxiosResponse> {
   if (isNil(config)) {
     config = {};
   }
 
-  const mergeConfig: AxiosRequestConfig = {
+  const mergeConfig: Axios_T.AxiosRequestConfig = {
     data: data,
 
     ...config,
@@ -98,12 +101,12 @@ export function ajaxPut(url: string, data: object, config?: AxiosRequestConfig):
   return ajaxRequest('PUT', url, mergeConfig);
 }
 
-export function ajaxPatch(url: string, data: object, config?: AxiosRequestConfig): Promise<AxiosResponse> {
+export function ajaxPatch(url: string, data: object, config?: Axios_T.AxiosRequestConfig): Promise<Axios_T.AxiosResponse> {
   if (isNil(config)) {
     config = {};
   }
 
-  const mergeConfig: AxiosRequestConfig = {
+  const mergeConfig: Axios_T.AxiosRequestConfig = {
     data: data,
 
     ...config,
@@ -114,7 +117,7 @@ export function ajaxPatch(url: string, data: object, config?: AxiosRequestConfig
 
 
 
-export function ajaxHandleError(resp: AxiosResponse | AxiosError | object): void {
+export function ajaxHandleError(resp: Axios_T.AxiosResponse | Axios_T.AxiosError | object): void {
   let err: string;
 
   if (resp instanceof Error) {
@@ -229,7 +232,7 @@ export function ajaxHandleError(resp: AxiosResponse | AxiosError | object): void
   }).then(() => {});
 }
 
-const _onFulfilled = (resp: AxiosResponse): object | false => {
+const _onFulfilled = (resp: Axios_T.AxiosResponse): object | false => {
   if (resp.config.responseType === 'blob') {
     return resp;
   }
