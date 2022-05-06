@@ -1,13 +1,40 @@
 {
-  "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
-    "target": "ES5",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "outDir": "dist",
+    "sourceMap": false,
+    "noEmit": true,
+
+    "target": "ES2015",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowJs": false,
+
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "strict": true,
+    "skipLibCheck": true,
+
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "removeComments": false,
     "lib": ["esnext", "dom"],
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "types": ["jest", "node"],
+
+
+
+
     "newLine": "lf",
     "declaration": true,
-    "declarationDir": "./types",
-    "sourceMap": false
-  }
+    "declarationDir": "./types"
+  },
+  "include": [
+    "node_modules/microbundle/index.d.ts",
+    "src/**/*"
+  ]
 }

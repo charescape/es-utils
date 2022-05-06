@@ -1,21 +1,29 @@
 {
   "name": "@charescape/es-utils",
+  "amdName": "EsUtils",
   "type": "module",
   "version": "2.0.1",
+  "private": false,
   "description": "Javascript utilities for node.js and web",
   "keywords": [
     "javascript",
     "utilities"
   ],
-  "source": "src/index.ts",
-  "exports": {
-    "require": "./dist/es-utils.cjs",
-    "default": "./dist/es-utils.modern.js"
-  },
   "main": "./dist/es-utils.cjs",
   "module": "./dist/es-utils.esm.js",
   "unpkg": "./dist/es-utils.umd.js",
 
+  "source": "src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "browser": "./dist/es-utils.esm.js",
+      "umd": "./dist/es-utils.umd.js",
+      "import": "./dist/es-utils.mjs",
+      "require": "./dist/es-utils.js"
+    },
+    "./package.json": "./package.json"
+  },
 
   "types": "types/index.d.ts",
   "files": [
@@ -31,8 +39,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "microbuild": "microbundle",
+    "microbuild": "microbundle --visualize src/*.ts",
     "microdev": "microbundle watch",
+
     "build": "npm run build:types && npm run build:dist",
     "build:dist": "rm -rf dist/ && rollup -c",
     "build:types": "rm -rf types/ && tsc --emitDeclarationOnly --moduleResolution node",
