@@ -6,8 +6,9 @@
 //    "sourceMap": false,
 //    "noEmit": true,
 
-    "target": "ES2015",
-    "module": "esnext",
+    // https://github.com/developit/microbundle#using-with-typescript
+    "target": "ESNext", // strongly recommended
+    "module": "ESNext", // strongly recommended
     "moduleResolution": "node",
     "allowJs": false,
 
