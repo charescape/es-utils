@@ -6,3 +6,4 @@
 /coverage/
 
 /dist/**/*.min.js
+/dist/**/*.map
