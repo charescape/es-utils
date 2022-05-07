@@ -110,17 +110,12 @@ export function isPlainObject(value: any): boolean {
     return false;
   }
 
-  // following lodash: https://github.com/lodash/lodash/blob/master/isPlainObject.js#L34-L41
+  // following axios: https://github.com/axios/axios/blob/384b7e6994c7392e4a39056ee5bb56755bcac11a/lib/utils.js#L118
   if (Object.getPrototypeOf(value) === null) {
     return true;
   }
 
-  let prototypeOf = value;
-  while (Object.getPrototypeOf(prototypeOf) !== null) {
-    prototypeOf = Object.getPrototypeOf(prototypeOf);
-  }
-
-  return Object.getPrototypeOf(value) === prototypeOf;
+  return Object.getPrototypeOf(value) === Object.prototype;
 }
 
 
