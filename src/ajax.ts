@@ -6,9 +6,9 @@ import {swalAlert, swalToast} from "./swal";
 export function ajaxRequest(method: Method, url: string, config: AxiosRequestConfig): Promise<AxiosResponse> {
   const axiosInstance: AxiosInstance = axios.create();
 
-  axiosInstance.defaults.headers.post['Content-Type']  = 'application/x-www-form-urlencoded';
-  axiosInstance.defaults.headers.put['Content-Type']   = 'application/x-www-form-urlencoded';
-  axiosInstance.defaults.headers.patch['Content-Type'] = 'application/x-www-form-urlencoded';
+  axiosInstance.defaults.headers.post['Content-Type']  = 'application/json';
+  axiosInstance.defaults.headers.put['Content-Type']   = 'application/json';
+  axiosInstance.defaults.headers.patch['Content-Type'] = 'application/json';
 
   axiosInstance.interceptors.response.use(_onFulfilled, _onRejected);
 
