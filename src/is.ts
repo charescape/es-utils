@@ -111,11 +111,9 @@ export function isPlainObject(value: any): boolean {
   }
 
   // following axios: https://github.com/axios/axios/blob/384b7e6994c7392e4a39056ee5bb56755bcac11a/lib/utils.js#L118
-  if (Object.getPrototypeOf(value) === null) {
-    return true;
-  }
+  const prototype = Object.getPrototypeOf(value);
 
-  return Object.getPrototypeOf(value) === Object.prototype;
+  return prototype === Object.prototype;
 }
 
 
