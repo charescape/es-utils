@@ -269,7 +269,7 @@ const _onFulfilled = (resp: AxiosResponse): object | false => {
       }).then(() => {});
     }
 
-    return resp;
+    return {...respData};
   }
 
   ajaxHandleError(resp);
