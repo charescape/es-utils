@@ -57,7 +57,7 @@
     "core-js": "^3.23.3",
     "js-base64": "^3.7.2",
     "lodash-es": "^4.17.0",
-    "qs": "^6.10.3",
+    "qs": "^6.11.0",
     "sweetalert2": "^11.4.0"
   },
   "devDependencies": {
