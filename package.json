@@ -58,7 +58,7 @@
     "js-base64": "^3.7.2",
     "lodash-es": "^4.17.0",
     "qs": "^6.11.0",
-    "sweetalert2": "^11.4.20"
+    "sweetalert2": "^11.4.38"
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",
